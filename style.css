@@ -1,0 +1,18 @@
+
+.text_field {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.text_field
+.text_field_typed {
+    color:blue;
+}
+
+.text_field
+.text_field_error {
+    color:red
+}
+
+.text_field
