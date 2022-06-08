@@ -1,4 +1,12 @@
 
+
+.letter_field {
+    /* width: auto;
+     */
+     display: inline-block;
+}
+
+
 .text_field {
     width: 50%;
     display: block;
@@ -15,4 +23,4 @@
     color:red
 }
 
-.text_field
+/* .text_field */
