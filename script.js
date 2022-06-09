@@ -3,37 +3,56 @@ window.addEventListener('DOMContentLoaded', () => {
     //page elements
     var textWrapper = document.querySelector('.text_field')
 
-    var textArray = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis culpa in eveniet cum quam, deleniti dignissimos eligendi voluptatibus veniam maiores consequuntur voluptate assumenda dolore itaque minima autem quae perspiciatis doloremque?'.split('')
-
-    currentLetter = textArray[0]
-
-    var controlArray = []
-
+    var textArray = 'Lorem ipsum dolor'.split('')
 
     //
     textArray.forEach(item => addNewDivElemWithClass(textWrapper,'letter_field',item))
+    letterFields = document.querySelectorAll('.letter_field')
 
 
-
-
+    currentLetterIndex = 0
+    // console.log(currentLetter)
     document.addEventListener('keypress', (event) => {
-        console.log(event.code.slice(3))
-        if (event.code.slice(3).toLowerCase() == currentLetter) {
+        console.log(event.keyCode)
+        if (event.keyCode == letterFields[currentLetterIndex].textContent.toLowerCase().charCodeAt(0)) {
             //update color
+            letterFields[currentLetterIndex].classList.remove('text_field_error')
+            letterFields[currentLetterIndex].classList.add('text_field_completed')
+            ++currentLetterIndex
         } else {
             //error code
+            letterFields[currentLetterIndex].classList.add('text_field_error')
         }
+
+        // if (currentLetterIndex >= textArray.length) {
+        //     document.removeEventListener('keypress')
+        // }
     })
 
-    // const 
-
-
 })
+
+// function keyboardListenerLogic(event) {
+//     console.log(event.keyCode)
+//         if (event.keyCode == letterFields[currentLetterIndex].textContent.toLowerCase().charCodeAt(0)) {
+//             //update color
+//             letterFields[currentLetterIndex].classList.remove('text_field_error')
+//             letterFields[currentLetterIndex].classList.add('text_field_completed')
+//             ++currentLetterIndex
+//         } else {
+//             //error code
+//             letterFields[currentLetterIndex].classList.add('text_field_error')
+//         }
+
+//         if (currentLetterIndex >= textArray.length) {
+//             document.removeEventListener('keypress')
+//         }
+// }
 
 
 function addNewDivElemWithClass(parent,className,textContent) {
     var div = document.createElement('div')
     div.classList.add(className)
     div.textContent = textContent
+    // arrayOfElements.append(div)
     parent.append(div)
 }

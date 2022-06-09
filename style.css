@@ -1,24 +1,23 @@
 
 
 .letter_field {
-    /* width: auto;
-     */
      display: inline-block;
+     min-width: 4.4px;
 }
 
 
 .text_field {
-    width: 50%;
+    width: 51%;
     display: block;
     margin: 0 auto;
 }
 
-.text_field
-.text_field_typed {
+/* .text_field */
+.text_field_completed {
     color:blue;
 }
 
-.text_field
+/* .text_field */
 .text_field_error {
     color:red
 }
