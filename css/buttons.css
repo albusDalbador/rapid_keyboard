@@ -1,0 +1,21 @@
+
+.start_button {
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid rgba(48, 148, 214, 0.301);
+    margin: 50px auto;
+    transition: 0.5s all;
+    text-align: center;
+    color: blue;
+    cursor: pointer;
+    /* padding: 10px 15px 0 15px; */
+}
+
+.start_button:hover{
+    width: 170px;
+    height: 35px;
+    line-height: 35px;
+    margin: 47.5px auto;
+    background-color: rgba(48, 148, 214,0.6);
+}

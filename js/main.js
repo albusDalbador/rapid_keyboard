@@ -8,7 +8,8 @@ function isUpper(str) {
 window.addEventListener('DOMContentLoaded', () => {
 
     //page elements selectors
-    var textWrapper = document.querySelector('.text_field')
+    var textWrapper = document.querySelector('.text_field'),
+    startButton = document.querySelector('.start_button')
 
 
     //other variables
@@ -29,6 +30,12 @@ window.addEventListener('DOMContentLoaded', () => {
     currentLetter = letterFields[0].textContent
     //
     errorCounter = 0
+
+
+
+    startButton.addEventListener('click', (event) => {
+        startButton.style.display = 'none'
+    })
 
 
     //keyboard listener
