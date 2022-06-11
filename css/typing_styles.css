@@ -3,7 +3,9 @@
 .letter_field {
      display: inline-block;
      min-width: 4.4px;
+     min-height: 12px;
 }
+
 
 
 .text_field {
@@ -12,14 +14,21 @@
     margin: 0 auto;
 }
 
+.text_field_current{
+    border-bottom: 2px solid black;
+}
+
 /* .text_field */
 .text_field_completed {
     color:blue;
+    /* background-color: #eeffe6; */
 }
 
 /* .text_field */
 .text_field_error {
-    color:red
+    color:red;
+    background-color: #f09d9d;
+    border-bottom: 2px solid red;
 }
 
 /* .text_field */
