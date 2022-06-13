@@ -2,5 +2,9 @@
 
 .container {
     width: 80%;
+    min-height: 300px;
     margin: 200px auto;
+    background-color: #ebd598;
+    border-radius: 20px;
+    padding: 50px;
 }

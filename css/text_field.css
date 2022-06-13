@@ -1,21 +1,34 @@
 
-
-.letter_field {
-     display: inline-block;
-     min-width: 4.4px;
-     min-height: 12px;
-}
-
-
-
 .text_field {
-    width: 51%;
+    width: 80%;
     display: block;
     margin: 0 auto;
 }
 
+.letter_wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 25px
+}
+
+.letter_field {
+     display: inline-block;
+     min-width: 6.4px;
+     min-height: 12px;
+     /* line-height: 120%   ; */
+     /* padding-bottom: 1px;
+      */
+    border-bottom: 1px solid #ebd598;
+}
+
+
+.text_field_space{
+    background-color: red;
+    padding-bottom: 3px;
+}
+
 .text_field_current{
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
 }
 
 /* .text_field */
@@ -28,7 +41,7 @@
 .text_field_error {
     color:red;
     background-color: #f09d9d;
-    border-bottom: 2px solid red;
+    border-bottom: 1px solid red;
 }
 
 /* .text_field */
