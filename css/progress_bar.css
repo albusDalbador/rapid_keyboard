@@ -1,0 +1,16 @@
+.progress_bar {
+    width: 500px;
+    height: 10px;
+    background-color: chocolate;
+    margin: 0 auto 
+}
+
+
+.progress_bar_circle {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 100%;
+    margin-left: 0px;
+    /* display: flex; */
+}

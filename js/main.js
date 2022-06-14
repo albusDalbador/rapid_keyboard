@@ -4,12 +4,19 @@ function isUpper(str) {
 }
 
 
+function updateProgressBarCircle(circle,step) {
+    circle.style.marginLeft = (parseInt(circle.style.marginLeft.split) + step).toString() + 'px'
+    console.log(parseFloat(circle.style.marginLeft))
+    console.log(circle.style.marginLeft)
+}
+
 
 window.addEventListener('DOMContentLoaded', () => {
 
     //page elements selectors
     var textField = document.querySelector('.text_field'),
-    startButton = document.querySelector('.start_button')
+    startButton = document.querySelector('.start_button'),
+    progressBarCircle = document.querySelector('.progress_bar_circle')
 
     var textArray = 'Lorem ipsum dolor'.split('')
     letterFields = []
@@ -46,39 +53,54 @@ window.addEventListener('DOMContentLoaded', () => {
             startButton.textContent = 'Go!'
             startTime = new Date().getTime()
             console.log(startTime)
+            document.dispatchEvent(new Event('gameStarted'))
             setTimeout(() => {
-                startButton.remove()
+                startButton.style.display = 'none'
+                startButton.style.pointerEvents = 'none'
             }, 2000)
         },6000)
     })
 
 
-    document.addEventListener('keypress',(event) => { 
+    document.addEventListener('gameStarted', () => {
+        // alert("start")
+        document.addEventListener('keypress',(event) => { 
         
-        if (event.key == currentLetter) {
-            letterFields[currentLetterIndex].classList.remove('text_field_error')
-            letterFields[currentLetterIndex].classList.remove('text_field_current')
-            letterFields[currentLetterIndex].classList.add('text_field_completed')
-            
-            if (currentLetterIndex == textArray.length-1) { 
-                document.dispatchEvent(new Event('textCompleted'))
-            } else {
-                letterFields[++currentLetterIndex].classList.add('text_field_current')
-                currentLetter = letterFields[currentLetterIndex].textContent
-            }
-            
-        } else {
-            ++errorCounter
-            letterFields[currentLetterIndex].classList.add('text_field_error')
-        }
+            if (event.key == currentLetter) {
+                letterFields[currentLetterIndex].classList.remove('text_field_error')
+                letterFields[currentLetterIndex].classList.remove('text_field_current')
+                letterFields[currentLetterIndex].classList.add('text_field_completed')
 
-        
+                updateProgressBarCircle(progressBarCircle,480/textArray.length)
+                
+                if (currentLetterIndex == textArray.length-1) { 
+                    document.dispatchEvent(new Event('textCompleted'))
+                } else {
+                    letterFields[++currentLetterIndex].classList.add('text_field_current')
+                    currentLetter = letterFields[currentLetterIndex].textContent
+                }
+                
+            } else {
+                ++errorCounter
+                letterFields[currentLetterIndex].classList.add('text_field_error')
+            }
+    
+            
+        })
     })
 
     document.addEventListener('textCompleted',()=> {
         stopTime = (new Date()).getTime()
-        console.log(stopTime)
-        alert(`${stopTime - startTime}ms`)
+        // console.log(stopTime)
+        // alert(`${stopTime - startTime}ms`)
+        resultMinutes = Math.round((stopTime - startTime) / 60000)
+        resultSeconds = Math.round((stopTime - startTime)/10)/100
+        // resultSeconds = stopTime - startTime
+        console.log(resultMinutes)
+        console.log(resultSeconds)
+        // console.log(resultTimeMinutes)
+        startButton.textContent = resultMinutes > 0 ? `${resultMinutes}m, ${resultSeconds}s` : `${resultSeconds}s`
+        startButton.style.display = 'block';
     })
 
 })
